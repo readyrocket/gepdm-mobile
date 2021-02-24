@@ -3,14 +3,14 @@ import { Link } from '@react-navigation/native';
 
 import { GestureButtonComponent } from '../../components/Button';
 import { Input } from '../../components/TextInput';
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
-export const ScrollView = styled.ScrollView`
+const _ScrollView = styled.ScrollView`
   flex: 1;
   background-color: ${colors.e_tertiary};
 `;
 
-export const Form = styled.View`
+const _FormContainer = styled.View`
   flex: 1;
   justify-content: flex-start;
   flex-direction: column;
@@ -24,60 +24,78 @@ export const Form = styled.View`
   border-top-left-radius: 20px;
 `;
 
-export const FormPassword = styled.View`
-	margin-top: 0px;
+const _FormPassword = styled.View`
+  margin-top: 0px;
 `;
 
-export const FormInput = styled(Input)`
+const _FormInput = styled(Input)`
   background-color: ${colors.e_quaternary};
   margin-bottom: 16px;
 `;
 
-export const FormSignUpText = styled.Text`
+const _FormSignUpText = styled.Text`
   font-size: 16px;
   color: ${colors.e_primary};
 `;
 
-export const FormInputErrorEmail = styled.Text`
-  color: ${colors.c_secondary};
+const _FormInputErrorEmail = styled.Text`
+  color: ${colors.c_tertiary};
   margin-top: 70px;
   z-index: 2;
   font-size: 16px;
   position: absolute;
 `;
 
-export const FormInputErrorPassword = styled.Text`
-  color: ${colors.c_secondary};
+const _FormInputErrorPassword = styled.Text`
+  color: ${colors.c_tertiary};
   margin-top: 70px;
   z-index: 2;
   font-size: 16px;
   position: absolute;
 `;
 
-export const FormButton = styled(GestureButtonComponent)`
+const _FormButton = styled(GestureButtonComponent)`
   margin-top: 30px;
-  background-color: ${colors.c_tertiary};
+  background-color: ${colors.c_quaternary};
   align-items: center;
   padding: 15px;
 `;
 
-export const FormButtonText = styled.Text`
+const _FormButtonText = styled.Text`
   color: ${colors.e_quaternary};
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 `;
 
-export const FormButtonNavigate = styled(GestureButtonComponent)`
+const _FormButtonNavigate = styled(GestureButtonComponent)`
   margin-top: 30px;
   padding: 15px;
-  background-color: ${colors.c_secondary};
+  background-color: ${colors.c_primary};
 `;
 
-export const FormRecoveryPassword = styled(Link)`
+const _FormRecoveryPassword = styled(Link)`
   justify-content: center;
   text-align: center;
   margin-top: 20px;
   font-size: 16px;
-	font-weight: 600;
+  font-weight: 600;
 `;
+
+export const Screen = {
+  layout: {
+    ScrollView: _ScrollView,
+    FormContainer: _FormContainer,
+    FormPassword: _FormPassword,
+  },
+  with: {
+    Input: _FormInput,
+    SignUpText: _FormSignUpText,
+    EmailError: _FormInputErrorEmail,
+    PasswordError: _FormInputErrorPassword,
+    Button: _FormButton,
+    ButtonLabel: _FormButtonText,
+    ButtonNavigate: _FormButtonNavigate,
+    RecoveryPassword: _FormRecoveryPassword,
+  },
+};

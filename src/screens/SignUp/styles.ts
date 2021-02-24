@@ -3,9 +3,9 @@ import { Link } from '@react-navigation/native';
 
 import { GestureButtonComponent } from '../../components/Button';
 import { Input } from '../../components/TextInput';
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
-export const Form = styled.View`
+const _Form = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: center;
@@ -23,48 +23,64 @@ export const Form = styled.View`
 	position: relative;
 `;
 
-export const FormEmail = styled.View`
-	margin-top: 10px;
-`;
-
-export const FormPassword = styled.View`
+const _FormEmail = styled.View`
   margin-top: 10px;
 `;
 
-export const FormRectButton = styled(GestureButtonComponent)`
+const _FormPassword = styled.View`
+  margin-top: 10px;
+`;
+
+const _FormRectButton = styled(GestureButtonComponent)`
   margin-top: 50px;
-  background-color: ${colors.c_tertiary};
+  background-color: ${colors.c_quaternary};
   padding: 15px;
   font-weight: bold;
   font-family: "Poppins";
 `;
 
-export const FormRectButtonText = styled.Text`
-	color: ${colors.e_quaternary};
-	font-family: 'Poppins';
-	font-weight: bold;
+const _FormRectButtonText = styled.Text`
+  color: ${colors.e_quaternary};
+  font-family: "Poppins";
+  font-weight: bold;
 `;
 
-export const FormButtonRegister = styled(Link)`
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-top: 15px;
-	text-align: center;
+const _FormButtonRegister = styled(Link)`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
 `;
 
-export const FormButtonRegisterText = styled.Text`
-	font-size: 16px;
-	color: ${colors.e_primary};
+const _FormButtonRegisterText = styled.Text`
+  font-size: 16px;
+  color: ${colors.e_primary};
 `;
 
-export const FormInput = styled(Input)`
-	background-color: ${colors.e_quaternary};
+const _FormInput = styled(Input)`
+  background-color: ${colors.e_quaternary};
 `;
 
-export const FormErrorMessage = styled.Text`
-  color: ${colors.c_primary};
+const _FormErrorMessage = styled.Text`
+  color: ${colors.c_tertiary};
   margin-top: 65px;
   position: absolute;
-	z-index: 2;
+  z-index: 2;
 `;
+
+export const Screen = {
+  layout: {
+    FormContainer: _Form,
+    EmailContainer: _FormEmail,
+    PassowordContainer: _FormPassword,
+  },
+  with: {
+    ButtonSubmit: _FormRectButton,
+    ButtonSubmitLabel: _FormRectButtonText,
+    ButtonRegister: _FormButtonRegister,
+    ButtonRegisterLabel: _FormButtonRegisterText,
+    Input: _FormInput,
+    MessageError: _FormErrorMessage,
+  },
+};

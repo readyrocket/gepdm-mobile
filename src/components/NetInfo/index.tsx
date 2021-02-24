@@ -2,7 +2,7 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
 const NetInfoComponent = () => {
 	const netInfo = useNetInfo();

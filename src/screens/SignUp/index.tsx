@@ -11,10 +11,10 @@ import { showToastWithGravity } from '../../components/NativeToast';
 import { SvgHeaderIcon } from '../../components/SvgHeaderIcon';
 import { api } from '../../services/api';
 import { SignUpSchema } from './signup.validations';
-import * as Styles from './styles';
+import { Screen } from './styles';
 import { User } from './types';
 
-function SignUpScreen() {
+function SignUp() {
   const { navigate } = useNavigation();
   const [loading, setLoading] = useState(false);
 
@@ -51,14 +51,17 @@ function SignUpScreen() {
       keyboardVerticalOffset={100}
       style={{ flex: 1 }}
       behavior={Platform.OS === `ios` ? `position` : null}
-    >
+		>
+			
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
         }}
-      >
-        <SvgHeaderIcon>Sua comida preferida mais perto de você!</SvgHeaderIcon>
-        <Styles.Form>
+			>
+				
+				<SvgHeaderIcon>Sua comida preferida mais perto de você!</SvgHeaderIcon>
+				
+        <Screen.layout.FormContainer>
           <Formik
             validationSchema={SignUpSchema}
             initialValues={{
@@ -78,8 +81,8 @@ function SignUpScreen() {
               touched,
             }) => (
               <>
-                <View style={{ position: `relative` }}>
-                  <Styles.FormInput
+                <View>
+                  <Screen.with.Input
                     placeholder="Seu Nome"
                     autoCompleteType="name"
                     keyboardType="name-phone-pad"
@@ -89,9 +92,9 @@ function SignUpScreen() {
                     error={!!errors.name}
                   />
                   {errors.name && touched.name ? (
-                    <Styles.FormErrorMessage>
+                    <Screen.with.MessageError>
                       {errors.name}
-                    </Styles.FormErrorMessage>
+                    </Screen.with.MessageError>
                   ) : null}
                   <IconProfile
                     style={{
@@ -100,9 +103,10 @@ function SignUpScreen() {
                       top: 20,
                     }}
                   />
-                </View>
-                <Styles.FormEmail>
-                  <Styles.FormInput
+								</View>
+								
+                <Screen.layout.EmailContainer>
+                  <Screen.with.Input
                     placeholder="seu_email@mail.com"
                     autoCompleteType="email"
                     keyboardType="email-address"
@@ -113,9 +117,9 @@ function SignUpScreen() {
                     error={!!errors.email}
                   />
                   {errors.email && touched.email ? (
-                    <Styles.FormErrorMessage>
+                    <Screen.with.MessageError>
                       {errors.email}
-                    </Styles.FormErrorMessage>
+                    </Screen.with.MessageError>
                   ) : null}
                   <IconEmail
                     style={{
@@ -124,10 +128,10 @@ function SignUpScreen() {
                       top: 20,
                     }}
                   />
-                </Styles.FormEmail>
+                </Screen.layout.EmailContainer>
 
-                <Styles.FormPassword>
-                  <Styles.FormInput
+                <Screen.layout.PassowordContainer>
+									<Screen.with.Input
                     placeholder="********"
                     textContentType="password"
                     secureTextEntry
@@ -139,9 +143,9 @@ function SignUpScreen() {
                     error={!!errors.password}
                   />
                   {errors.password && touched.password ? (
-                    <Styles.FormErrorMessage>
+                    <Screen.with.MessageError>
                       {errors.password}
-                    </Styles.FormErrorMessage>
+                    </Screen.with.MessageError>
                   ) : null}
                   <IconPassword
                     style={{
@@ -150,10 +154,10 @@ function SignUpScreen() {
                       top: 20,
                     }}
                   />
-                </Styles.FormPassword>
+                </Screen.layout.PassowordContainer>
 
-                <Styles.FormPassword>
-                  <Styles.FormInput
+                <Screen.layout.PassowordContainer>
+                  <Screen.with.Input
                     placeholder="********"
                     textContentType="password"
                     secureTextEntry
@@ -165,9 +169,9 @@ function SignUpScreen() {
                     error={!!errors.confirmedPassword}
                   />
                   {errors.confirmedPassword && touched.confirmedPassword ? (
-                    <Styles.FormErrorMessage>
+                    <Screen.with.MessageError>
                       {errors.confirmedPassword}
-                    </Styles.FormErrorMessage>
+                    </Screen.with.MessageError>
                   ) : null}
                   <IconPassword
                     style={{
@@ -176,12 +180,13 @@ function SignUpScreen() {
                       top: 20,
                     }}
                   />
-                </Styles.FormPassword>
-                <Styles.FormRectButton onPress={() => handleSubmit()}>
+								</Screen.layout.PassowordContainer>
+								
+                <Screen.with.ButtonSubmit onPress={() => handleSubmit()}>
                   {!loading && (
-                    <Styles.FormRectButtonText>
+                    <Screen.with.ButtonSubmitLabel>
                       CADASTRAR
-                    </Styles.FormRectButtonText>
+                    </Screen.with.ButtonSubmitLabel>
                   )}
                   {loading && (
                     <PulseIndicator
@@ -192,19 +197,24 @@ function SignUpScreen() {
                       interaction
                     />
                   )}
-                </Styles.FormRectButton>
-                <Styles.FormButtonRegister to="/Login">
-                  <Styles.FormButtonRegisterText>
+								</Screen.with.ButtonSubmit>
+								
+                <Screen.with.ButtonRegister to="/Login">
+                  <Screen.with.ButtonRegisterLabel>
                     Já tem uma conta ?
-                  </Styles.FormButtonRegisterText>
-                </Styles.FormButtonRegister>
+                  </Screen.with.ButtonRegisterLabel>
+								</Screen.with.ButtonRegister>
+								
               </>
             )}
-          </Formik>
-        </Styles.Form>
-      </ScrollView>
+					</Formik>
+					
+				</Screen.layout.FormContainer>
+				
+			</ScrollView>
+			
     </KeyboardAvoidingView>
   );
 }
 
-export { SignUpScreen };
+export { SignUp };

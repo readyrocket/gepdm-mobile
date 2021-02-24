@@ -1,16 +1,17 @@
 const colors = {
-	c_primary: `#FF5F9B`,
-	c_primary_hover: `#FF8083`,
-	c_secondary: `#F16220`,
-	c_tertiary: `#AF53AB`,
-	c_quaternary: `#FFCA41`,
-	e_primary: `#16365F`,
-	e_secondary: `#68859E`,
-	e_tertiary: `#F7F8FB`,
-	e_quaternary: `#FFFFFF`,
+  c_primary: `#8d57e6`,
+  c_primary_variant: `#e14eca`,
+  c_secondary: `#ff8144`,
+  c_tertiary: `#fd0061`,
+	c_quaternary: `#08cf5e`,
+	
+  e_primary: `#1f2251`,
+  e_secondary: `#68859E`,
+  e_tertiary: `#F7F8FB`,
+  e_quaternary: `#FFFFFF`,
 
-	o_primary: `#FFFFFF`,
-	o_secondary: `#16365F`,
+  o_primary: `#FFFFFF`,
+  o_secondary: `#00071b`,
 };
 
 const margins = {

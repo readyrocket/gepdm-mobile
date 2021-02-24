@@ -1,6 +1,6 @@
 import { ScaledSheet } from 'react-native-size-matters';
 
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
 const styles = ScaledSheet.create({
 	wrapper: {

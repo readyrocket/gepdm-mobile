@@ -1,8 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
+import { Link, useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { Dimensions, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { PulseIndicator } from 'react-native-indicators';
+import { Checkbox } from 'react-native-paper';
 
 import { IconEmail } from '../../assets/signin/Email';
 import { IconPassword } from '../../assets/signin/Password';
@@ -17,15 +18,21 @@ import { User } from './types';
 function SignUp() {
   const { navigate } = useNavigation();
   const [loading, setLoading] = useState(false);
+  const [privacy_policy, setPrivacyPolicy] = useState(false);
 
   const handleUserSignUp = async (userData: User) => {
     setLoading(true);
     try {
-      const { name, email, password } = userData;
+			const { name, email, password } = userData;
+			
+			if (!privacy_policy)
+				return;
+
       const response = await api.post(`/register`, {
         name,
         email,
-        password,
+				password,
+				privacy_policy
       });
 
       if (response.status === 201) {
@@ -44,23 +51,24 @@ function SignUp() {
       showToastWithGravity(error.response?.data?.message);
     }
     setLoading(false);
-  };
+	};
+	
+  const Height = Dimensions.get("screen").height;
 
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={100}
       style={{ flex: 1 }}
       behavior={Platform.OS === `ios` ? `position` : null}
-		>
-			
+    >
       <ScrollView
         contentContainerStyle={{
-          flexGrow: 1,
+					flexGrow: 1,
+					minHeight: Height
         }}
-			>
-				
-				<SvgHeaderIcon>Sua comida preferida mais perto de você!</SvgHeaderIcon>
-				
+      >
+        <SvgHeaderIcon>Sua comida preferida mais perto de você!</SvgHeaderIcon>
+
         <Screen.layout.FormContainer>
           <Formik
             validationSchema={SignUpSchema}
@@ -103,8 +111,8 @@ function SignUp() {
                       top: 20,
                     }}
                   />
-								</View>
-								
+                </View>
+
                 <Screen.layout.EmailContainer>
                   <Screen.with.Input
                     placeholder="seu_email@mail.com"
@@ -131,7 +139,7 @@ function SignUp() {
                 </Screen.layout.EmailContainer>
 
                 <Screen.layout.PassowordContainer>
-									<Screen.with.Input
+                  <Screen.with.Input
                     placeholder="********"
                     textContentType="password"
                     secureTextEntry
@@ -180,8 +188,23 @@ function SignUp() {
                       top: 20,
                     }}
                   />
-								</Screen.layout.PassowordContainer>
-								
+                </Screen.layout.PassowordContainer>
+
+                <Screen.layout.CheckBox>
+									<Checkbox
+										color="#08cf5e"
+										uncheckedColor="#e14eca"
+                    status={privacy_policy ? "checked" : "unchecked"}
+                    onPress={() => {
+                      setPrivacyPolicy((checked) => !checked);
+                    }}
+                  />
+                  <Screen.with.CheckBoxDescription>
+                    Eu concordo com os{" "}
+                    <Link to="/">termos de privacidade</Link>
+                  </Screen.with.CheckBoxDescription>
+                </Screen.layout.CheckBox>
+
                 <Screen.with.ButtonSubmit onPress={() => handleSubmit()}>
                   {!loading && (
                     <Screen.with.ButtonSubmitLabel>
@@ -197,22 +220,18 @@ function SignUp() {
                       interaction
                     />
                   )}
-								</Screen.with.ButtonSubmit>
-								
+                </Screen.with.ButtonSubmit>
+
                 <Screen.with.ButtonRegister to="/Login">
                   <Screen.with.ButtonRegisterLabel>
                     Já tem uma conta ?
                   </Screen.with.ButtonRegisterLabel>
-								</Screen.with.ButtonRegister>
-								
+                </Screen.with.ButtonRegister>
               </>
             )}
-					</Formik>
-					
-				</Screen.layout.FormContainer>
-				
-			</ScrollView>
-			
+          </Formik>
+        </Screen.layout.FormContainer>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }

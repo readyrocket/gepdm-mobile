@@ -1,25 +1,23 @@
+import styled from '@emotion/native';
 import React from 'react';
 import { TextInput } from 'react-native-paper';
-import { ScaledSheet } from 'react-native-size-matters';
 
-import { colors } from '../../theme/colors';
+import { colors } from '../../theme/theme';
 
 function Input(props) {
 	return (
-		<TextInput
+		<InputComponent
 			{...props}
 			selectionColor={colors.c_secondary}
 			placeholderTextColor="#ccc"
-			style={[styles.text_input, props.style]}>
+			style={props.style}>
 			{props?.children}
-		</TextInput>
+		</InputComponent>
 	);
 }
 
-const styles = ScaledSheet.create({
-	text_input: {
-		backgroundColor: colors.e_primary,
-	},
-});
+const InputComponent = styled(TextInput)`
+  background-color: ${colors.e_primary};
+`;
 
 export { Input };

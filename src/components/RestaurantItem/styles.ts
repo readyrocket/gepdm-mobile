@@ -1,45 +1,58 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import styled from '@emotion/native';
 
-import { colors } from '../../theme/colors';
+import { colors } from '../../theme/theme';
 
-const styles = ScaledSheet.create({
-	wrapper: {
-		backgroundColor: colors.e_tertiary,
-		marginTop: 10,
-		flexDirection: `row`,
-		justifyContent: `space-between`,
-		alignItems: `center`,
-		padding: 10,
-		minHeight: 120,
-		shadowColor: colors.e_primary,
-	},
-	container: {
-		flexDirection: `row`,
-		justifyContent: `flex-start`,
-		alignItems: `center`,
-		padding: 10
-	},
-	title: {
-		fontSize: 18,
-		color: colors.e_primary,
-	},
-	descriptionWrapper: {
-		flexDirection: `row`,
-		alignItems: `center`,
-	},
-	description: {
-		marginTop: 10,
-		fontSize: 12,
-		fontWeight: `100`,
-		color: colors.e_secondary,
-		lineHeight: 16,
-	},
-	imageProfile: {
-		width: `60@ms`,
-		height: `55@vs`,
-		marginRight: `15@vs`,
-		borderRadius: 50,
-	},
-});
+const _Wrapper = styled.View`
+  background-color: ${colors.e_tertiary};
+  margin-top: 15px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  min-height: 100px;
+`;
 
-export { styles };
+const _Container = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const _Title = styled.Text`
+  font-size: 18px;
+  color: ${colors.e_primary};
+`;
+const _DescriptionWrapper = styled.Text`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const _Description = styled.Text`
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 100;
+  color: ${colors.e_secondary};
+  line-height: 16px;
+	flex-wrap: wrap;
+	width: 250px;
+`;
+const _ImageProfile = styled.Image`
+  width: 60px;
+  height: 55px;
+  margin-right: 15px;
+  border-radius: 50px;
+`;
+
+
+export const Screen = {
+  layout: {
+    Wrapper: _Wrapper,
+    Container: _Container,
+    DescriptionWrapper: _DescriptionWrapper,
+  },
+  with: {
+    Title: _Title,
+    Description: _Description,
+    ImageProfile: _ImageProfile,
+  },
+};

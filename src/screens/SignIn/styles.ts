@@ -3,7 +3,7 @@ import { Link } from '@react-navigation/native';
 
 import { GestureButtonComponent } from '../../components/Button';
 import { Input } from '../../components/TextInput';
-import { colors } from '../../theme/colors';
+import { colors } from '../../theme/theme';
 
 const _ScrollView = styled.ScrollView`
   flex: 1;

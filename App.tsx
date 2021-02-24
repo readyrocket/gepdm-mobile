@@ -7,7 +7,7 @@ import { NetInfoComponent } from './src/components/NetInfo';
 import { GeneralStatusBarColor } from './src/components/StatusBar/StatusBar';
 import { AuthContextProvider } from './src/context/auth.context';
 import { Routes } from './src/navigation/routes';
-import { colors } from './src/theme/colors';
+import { colors } from './src/theme/theme';
 
 const App = () => 
 	(
@@ -29,10 +29,11 @@ const App = () =>
 	);
 
 const styles = StyleSheet.create({
-	wrapper: {
-		flex: 1,
-		backgroundColor: colors.elements_5
-	},
+  wrapper: {
+    flex: 1,
+    backgroundColor: colors.e_quaternary,
+    color: colors.e_primary,
+  },
 });
 
 export { App };

@@ -36,8 +36,8 @@ function SignIn() {
 		} finally {
 			setLoading(false);
 		}
-  };
-
+	};
+	
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={100}
@@ -46,7 +46,7 @@ function SignIn() {
     >
       <Screen.layout.ScrollView
         contentContainerStyle={{
-          flexGrow: 1,
+					flexGrow: 1,
         }}
       >
         <SvgHeaderIcon>Sua comida preferida mais perto de você!</SvgHeaderIcon>

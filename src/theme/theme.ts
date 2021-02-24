@@ -14,7 +14,7 @@ const colors = {
   o_secondary: `#00071b`,
 };
 
-const margins = {
+const margin = {
 	t_margin: 8,
 	s_margin: 16,
 	d_margin: 24,
@@ -22,12 +22,12 @@ const margins = {
 	b_margin: 64,
 };
 
-const paddings = {
-	t_margin: 8,
-	s_margin: 16,
-	d_margin: 24,
-	m_margin: 32,
-	b_margin: 64,
+const padding = {
+	t_padding: 8,
+	s_padding: 16,
+	d_padding: 24,
+	m_padding: 32,
+	b_padding: 64,
 };
 
 const fonts = {
@@ -43,4 +43,4 @@ const fonts = {
 	t_big: 38,
 };
 
-export { colors, margins, paddings, fonts };
+export { colors, margin, padding, fonts };

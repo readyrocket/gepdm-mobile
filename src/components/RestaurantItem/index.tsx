@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { View } from 'react-native';
 
-import { styles } from './styles';
+import { Screen } from './styles';
 
 export type TRestaurant = {
 	restaurant: {
@@ -14,20 +14,20 @@ export type TRestaurant = {
 	},
 };
 
-const RestaurantItem = ({ restaurant }: TRestaurant) => 
-	(
-		<View style={styles.wrapper}>
-			<View style={styles.container}>
-				<Image style={styles.imageProfile}
-					source={{ uri: restaurant?.profile }} />
-				<View style={styles.descriptionWrapper}>
-					<View>
-						<Text style={styles.title}>{restaurant?.name}</Text>
-						<Text style={styles.description}>{restaurant?.description}</Text>
-					</View>
-				</View>
-			</View>
-		</View>
-	);
+const RestaurantItem = ({ restaurant }: TRestaurant) => (
+  <Screen.layout.Wrapper>
+    <Screen.layout.Container>
+      <Screen.with.ImageProfile source={{ uri: restaurant?.profile }} />
+      <Screen.layout.DescriptionWrapper>
+        <View>
+          <Screen.with.Title>{restaurant?.name}</Screen.with.Title>
+          <Screen.with.Description numberOfLines={4}>
+            {restaurant?.description}
+          </Screen.with.Description>
+        </View>
+      </Screen.layout.DescriptionWrapper>
+    </Screen.layout.Container>
+  </Screen.layout.Wrapper>
+);
 
 export { RestaurantItem };

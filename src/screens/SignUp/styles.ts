@@ -3,7 +3,7 @@ import { Link } from '@react-navigation/native';
 
 import { GestureButtonComponent } from '../../components/Button';
 import { Input } from '../../components/TextInput';
-import { colors } from '../../theme/colors';
+import { colors, fonts } from '../../theme/theme';
 
 const _Form = styled.View`
   flex: 1;
@@ -20,7 +20,7 @@ const _Form = styled.View`
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 
-	position: relative;
+  position: relative;
 `;
 
 const _FormEmail = styled.View`
@@ -31,12 +31,25 @@ const _FormPassword = styled.View`
   margin-top: 10px;
 `;
 
+const _CheckBoxContainer = styled.View`
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+
+  margin-top: 32px;
+`;
+
+const _CheckBoxDescription = styled.Text`
+  font-size: ${fonts.p_small};
+  font-weight: 800;
+`;
+
 const _FormRectButton = styled(GestureButtonComponent)`
-  margin-top: 50px;
+  margin-top: 24px;
   background-color: ${colors.c_quaternary};
   padding: 15px;
   font-weight: bold;
-  font-family: "Poppins";
+  font-family: "Poppins, sans-serif";
 `;
 
 const _FormRectButtonText = styled.Text`
@@ -74,6 +87,7 @@ export const Screen = {
     FormContainer: _Form,
     EmailContainer: _FormEmail,
     PassowordContainer: _FormPassword,
+    CheckBox: _CheckBoxContainer,
   },
   with: {
     ButtonSubmit: _FormRectButton,
@@ -82,5 +96,6 @@ export const Screen = {
     ButtonRegisterLabel: _FormButtonRegisterText,
     Input: _FormInput,
     MessageError: _FormErrorMessage,
+    CheckBoxDescription: _CheckBoxDescription,
   },
 };

@@ -7,7 +7,7 @@ import { NetInfoComponent } from './src/components/NetInfo';
 import { GeneralStatusBarColor } from './src/components/StatusBar/StatusBar';
 import { AuthContextProvider } from './src/context/auth.context';
 import { Routes } from './src/navigation/routes';
-import { colors } from './src/utils/colors';
+import { colors } from './src/theme/colors';
 
 const App = () => 
 	(

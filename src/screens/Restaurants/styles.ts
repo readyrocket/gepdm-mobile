@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import { Input } from '../../components/TextInput';
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
 
 export const Wrapper = styled.View`

@@ -1,13 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-
-import React, {
-	createContext,
-	ReactChild,
-	ReactChildren,
-	useContext,
-	useEffect,
-	useState
-} from 'react';
+import React, { createContext, ReactChild, ReactChildren, useContext, useEffect, useState } from 'react';
 
 import { TResponse } from '../@types/request.type';
 import { api } from '../services/api';
@@ -86,10 +78,14 @@ const AuthContextProvider: React.FC<ChildrenProps> = ({ children }) => {
 					= AuthHeader.generate(jwtToken);
 				await AsyncStorage.multiSet([[`@RNAuth:token`, jwtToken]]);
 			}
-			setLoading(false);
-			return response;
+
+			throw { response };
+
 		} catch (error) {
-			return error.response;
+			const response = error?.response;
+			throw { response };
+		} finally {
+			setLoading(false);
 		}
 	};
 

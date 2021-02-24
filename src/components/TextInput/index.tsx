@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-native-paper';
 import { ScaledSheet } from 'react-native-size-matters';
 
-import { colors } from '../../utils/colors';
+import { colors } from '../../theme/colors';
 
 function Input(props) {
 	return (
